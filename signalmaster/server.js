@@ -1,10 +1,26 @@
-/*global console*/
+/*global console
+ *HTTP Configration
+
 var yetify = require('yetify'),
     config = require('getconfig'),
     uuid = require('node-uuid'),
     crypto = require('crypto'),
     port = parseInt(process.env.PORT || config.server.port, 10),
     io = require('socket.io').listen(port);
+ */
+//HTTPS Configration
+var yetify = require('yetify'),
+    config = require('getconfig'),
+    uuid = require('node-uuid'),
+    crypto = require('crypto'),
+    fs = require('fs'),
+    ports = parseInt(process.env.PORT || config.server.ports, 10),
+    privateKey = fs.readFileSync('fakekeys/privatekey.pem').toString(),
+    certificate = fs.readFileSync('fakekeys/certificate.pem').toString(),
+    app = require('express')(),
+    https = require('https').createServer({key: privateKey, cert: certificate},app),
+    io = require('socket.io').listen(https);
+    https.listen(ports);
 
 if (config.logLevel) {
     // https://github.com/Automattic/socket.io/wiki/Configuring-Socket.IO

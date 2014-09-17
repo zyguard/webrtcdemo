@@ -16,7 +16,8 @@
   "devDependencies": {
     "socket.io-client": "0.9.16",
     "precommit-hook": "0.3.10",
-    "tape": "^2.13.1"
+    "tape": "^2.13.1",
+    "express": "3.x.x"
   },
   "scripts": {
     "test": "node test.js"

@@ -145,4 +145,4 @@ io.sockets.on('connection', function (client) {
 });
 
 if (config.uid) process.setuid(config.uid);
-console.log(yetify.logo() + ' -- signal master is running at: http://localhost:' + port);
+console.log(yetify.logo() + ' -- signal master is running at: https://localhost:' + ports);
